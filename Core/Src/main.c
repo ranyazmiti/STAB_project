@@ -117,7 +117,7 @@ int main(void)
           HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);   // Allume LED
           HAL_Delay(1000); // Attend 1 seconde
           HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET); // Éteint LED
-          HAL_Delay(10000); // Attend 1 seconde
+          HAL_Delay(10000); // Attend 10 seconde
       }
   } else {
       // LED OFF = échec du montage
