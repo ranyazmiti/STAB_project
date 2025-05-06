@@ -1,7 +1,6 @@
 "./Application/User/Core/lfs_config.o"
 "./Application/User/Core/littlefs_port.o"
 "./Application/User/Core/main.o"
-"./Application/User/Core/old.o"
 "./Application/User/Core/stm32h5xx_hal_msp.o"
 "./Application/User/Core/stm32h5xx_it.o"
 "./Application/User/Core/syscalls.o"

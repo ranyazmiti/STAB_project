@@ -26,9 +26,9 @@ Application/User/Core/main.o: \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr_ex.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
- C:/Users/hp/Desktop/pfa/littlefs-2.10.2/littlefs-2.10.2/lfs.h \
- C:/Users/hp/Desktop/pfa/littlefs-2.10.2/littlefs-2.10.2/lfs_util.h \
- C:/Users/hp/Desktop/pfa/littlefs-2.10.2/littlefs-2.10.2/lfs_util.h \
+ ../../littlefs-2.10.2/littlefs-2.10.2/lfs.h \
+ ../../littlefs-2.10.2/littlefs-2.10.2/lfs_util.h \
+ ../../littlefs-2.10.2/littlefs-2.10.2/lfs_util.h \
  ../../Core/Inc/lfs_config.h
 ../../Core/Inc/main.h:
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
@@ -56,7 +56,7 @@ Application/User/Core/main.o: \
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr.h:
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr_ex.h:
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h:
-C:/Users/hp/Desktop/pfa/littlefs-2.10.2/littlefs-2.10.2/lfs.h:
-C:/Users/hp/Desktop/pfa/littlefs-2.10.2/littlefs-2.10.2/lfs_util.h:
-C:/Users/hp/Desktop/pfa/littlefs-2.10.2/littlefs-2.10.2/lfs_util.h:
+../../littlefs-2.10.2/littlefs-2.10.2/lfs.h:
+../../littlefs-2.10.2/littlefs-2.10.2/lfs_util.h:
+../../littlefs-2.10.2/littlefs-2.10.2/lfs_util.h:
 ../../Core/Inc/lfs_config.h:

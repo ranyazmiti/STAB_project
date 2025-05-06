@@ -132,7 +132,6 @@ int main(void)
    while (1)
    {
      /* USER CODE END WHILE */
-     // La LED reste allumée pendant tout le programme si tout va bien
    }
    /* USER CODE END 3 */
  }
@@ -230,7 +229,7 @@ static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
-  // Cette section configure la LED USER_LED1 pour qu'elle soit éteinte au démarrage.
+  // Cette section configure la LED LED1 pour qu'elle soit éteinte au démarrage.
   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 
   /* USER CODE END MX_GPIO_Init_1 */

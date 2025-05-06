@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00009ae4  0800024c  0800024c  0001024c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00001008  08009d30  08009d30  00019d30  2**2
+  2 .rodata       00001014  08009d30  08009d30  00019d30  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  0800ad38  0800ad38  000200c0  2**0
+  3 .ARM.extab    00000000  0800ad44  0800ad44  000200c0  2**0
                   CONTENTS
-  4 .ARM          00000000  0800ad38  0800ad38  000200c0  2**0
+  4 .ARM          00000000  0800ad44  0800ad44  000200c0  2**0
                   CONTENTS
-  5 .preinit_array 00000000  0800ad38  0800ad38  000200c0  2**0
+  5 .preinit_array 00000000  0800ad44  0800ad44  000200c0  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  0800ad38  0800ad38  0001ad38  2**2
+  6 .init_array   00000004  0800ad44  0800ad44  0001ad44  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  0800ad3c  0800ad3c  0001ad3c  2**2
+  7 .fini_array   00000004  0800ad48  0800ad48  0001ad48  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         000000c0  20000000  0800ad40  00020000  2**2
+  8 .data         000000c0  20000000  0800ad4c  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000170  200000c0  0800ae00  000200c0  2**2
+  9 .bss          00000170  200000c0  0800ae0c  000200c0  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000230  0800ae00  00020230  2**0
+ 10 ._user_heap_stack 00000600  20000230  0800ae0c  00020230  2**0
                   ALLOC
  11 .ARM.attributes 00000036  00000000  00000000  000200c0  2**0
                   CONTENTS, READONLY
@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00031cd8  00000000  00000000  00030c5e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000dba5  00000000  00000000  00062936  2**0
+ 18 .debug_line   0000db9b  00000000  00000000  00062936  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00133c80  00000000  00000000  000704db  2**0
+ 19 .debug_str    00133c9a  00000000  00000000  000704d1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  000040ac  00000000  00000000  001a415c  2**2
+ 20 .debug_frame  000040ac  00000000  00000000  001a416c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000006d  00000000  00000000  001a8208  2**0
+ 21 .debug_line_str 0000006d  00000000  00000000  001a8218  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -569,7 +569,7 @@ static void MX_GPIO_Init(void)
  8000572:	60da      	str	r2, [r3, #12]
  8000574:	611a      	str	r2, [r3, #16]
   /* USER CODE BEGIN MX_GPIO_Init_1 */
-  // Cette section configure la LED USER_LED1 pour qu'elle soit éteinte au démarrage.
+  // Cette section configure la LED LED1 pour qu'elle soit éteinte au démarrage.
   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
  8000576:	2200      	movs	r2, #0
  8000578:	f44f 7100 	mov.w	r1, #512	; 0x200
@@ -1238,7 +1238,7 @@ LoopForever:
   ldr r1, =_edata
  8000830:	200000c0 	.word	0x200000c0
   ldr r2, =_sidata
- 8000834:	0800ad40 	.word	0x0800ad40
+ 8000834:	0800ad4c 	.word	0x0800ad4c
   ldr r2, =_sbss
  8000838:	200000c0 	.word	0x200000c0
   ldr r4, =_ebss
@@ -2032,9 +2032,9 @@ static int lfs_bd_read(lfs_t *lfs,
  8000c9c:	bdb0      	pop	{r4, r5, r7, pc}
  8000c9e:	bf00      	nop
  8000ca0:	08009d50 	.word	0x08009d50
- 8000ca4:	0800ab54 	.word	0x0800ab54
+ 8000ca4:	0800ab60 	.word	0x0800ab60
  8000ca8:	08009d80 	.word	0x08009d80
- 8000cac:	08009dc0 	.word	0x08009dc0
+ 8000cac:	08009dcc 	.word	0x08009dcc
 
 08000cb0 <lfs_bd_cmp>:
 
@@ -2374,10 +2374,10 @@ static int lfs_bd_flush(lfs_t *lfs,
  8000ebe:	3720      	adds	r7, #32
  8000ec0:	46bd      	mov	sp, r7
  8000ec2:	bdb0      	pop	{r4, r5, r7, pc}
- 8000ec4:	08009dcc 	.word	0x08009dcc
- 8000ec8:	0800ab60 	.word	0x0800ab60
+ 8000ec4:	08009dd8 	.word	0x08009dd8
+ 8000ec8:	0800ab6c 	.word	0x0800ab6c
  8000ecc:	08009d80 	.word	0x08009d80
- 8000ed0:	08009dc0 	.word	0x08009dc0
+ 8000ed0:	08009dcc 	.word	0x08009dcc
 
 08000ed4 <lfs_bd_sync>:
 #endif
@@ -2439,8 +2439,8 @@ static int lfs_bd_sync(lfs_t *lfs,
  8000f2a:	46bd      	mov	sp, r7
  8000f2c:	bd80      	pop	{r7, pc}
  8000f2e:	bf00      	nop
- 8000f30:	08009dc0 	.word	0x08009dc0
- 8000f34:	0800ab70 	.word	0x0800ab70
+ 8000f30:	08009dcc 	.word	0x08009dcc
+ 8000f34:	0800ab7c 	.word	0x0800ab7c
  8000f38:	08009d80 	.word	0x08009d80
 
 08000f3c <lfs_bd_prog>:
@@ -2643,11 +2643,11 @@ static int lfs_bd_prog(lfs_t *lfs,
  800107a:	46bd      	mov	sp, r7
  800107c:	bd80      	pop	{r7, pc}
  800107e:	bf00      	nop
- 8001080:	08009df0 	.word	0x08009df0
- 8001084:	0800ab7c 	.word	0x0800ab7c
+ 8001080:	08009dfc 	.word	0x08009dfc
+ 8001084:	0800ab88 	.word	0x0800ab88
  8001088:	08009d80 	.word	0x08009d80
- 800108c:	08009e28 	.word	0x08009e28
- 8001090:	08009e4c 	.word	0x08009e4c
+ 800108c:	08009e34 	.word	0x08009e34
+ 8001090:	08009e58 	.word	0x08009e58
 
 08001094 <lfs_bd_erase>:
 #endif
@@ -2697,10 +2697,10 @@ static int lfs_bd_erase(lfs_t *lfs, lfs_block_t block) {
  80010e2:	46bd      	mov	sp, r7
  80010e4:	bd80      	pop	{r7, pc}
  80010e6:	bf00      	nop
- 80010e8:	08009e70 	.word	0x08009e70
- 80010ec:	0800ab88 	.word	0x0800ab88
+ 80010e8:	08009e7c 	.word	0x08009e7c
+ 80010ec:	0800ab94 	.word	0x0800ab94
  80010f0:	08009d80 	.word	0x08009d80
- 80010f4:	08009dc0 	.word	0x08009dc0
+ 80010f4:	08009dcc 	.word	0x08009dcc
 
 080010f8 <lfs_path_namelen>:
 
@@ -2724,7 +2724,7 @@ static inline lfs_size_t lfs_path_namelen(const char *path) {
  800110e:	46bd      	mov	sp, r7
  8001110:	bd80      	pop	{r7, pc}
  8001112:	bf00      	nop
- 8001114:	08009e8c 	.word	0x08009e8c
+ 8001114:	08009e98 	.word	0x08009e98
 
 08001118 <lfs_path_islast>:
 
@@ -2760,7 +2760,7 @@ static inline bool lfs_path_islast(const char *path) {
  800114e:	3710      	adds	r7, #16
  8001150:	46bd      	mov	sp, r7
  8001152:	bd80      	pop	{r7, pc}
- 8001154:	08009e8c 	.word	0x08009e8c
+ 8001154:	08009e98 	.word	0x08009e98
 
 08001158 <lfs_path_isdir>:
 
@@ -4302,9 +4302,9 @@ static int lfs_alloc(lfs_t *lfs, lfs_block_t *block) {
  8001aba:	46bd      	mov	sp, r7
  8001abc:	bd80      	pop	{r7, pc}
  8001abe:	bf00      	nop
- 8001ac0:	08009ebc 	.word	0x08009ebc
+ 8001ac0:	08009ec8 	.word	0x08009ec8
  8001ac4:	08009d80 	.word	0x08009d80
- 8001ac8:	08009e90 	.word	0x08009e90
+ 8001ac8:	08009e9c 	.word	0x08009e9c
 
 08001acc <lfs_dir_getslice>:
 #endif
@@ -5377,8 +5377,8 @@ static int lfs_dir_traverse(lfs_t *lfs,
                 continue;
  800222e:	e19d      	b.n	800256c <lfs_dir_traverse+0x610>
  8002230:	7ff00000 	.word	0x7ff00000
- 8002234:	08009ec0 	.word	0x08009ec0
- 8002238:	0800ab98 	.word	0x0800ab98
+ 8002234:	08009ecc 	.word	0x08009ecc
+ 8002238:	0800aba4 	.word	0x0800aba4
  800223c:	08009d80 	.word	0x08009d80
  8002240:	08001ea5 	.word	0x08001ea5
             }
@@ -6589,7 +6589,7 @@ static lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
  8002b3a:	663b      	str	r3, [r7, #96]	; 0x60
  8002b3c:	e08a      	b.n	8002c54 <lfs_dir_fetchmatch+0x530>
  8002b3e:	bf00      	nop
- 8002b40:	08009f00 	.word	0x08009f00
+ 8002b40:	08009f0c 	.word	0x08009f0c
  8002b44:	000ffc00 	.word	0x000ffc00
                 } else if (tempbesttag != -1 &&
  8002b48:	6e3b      	ldr	r3, [r7, #96]	; 0x60
@@ -7103,9 +7103,9 @@ static lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
  8002eb0:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8002eb2:	bf00      	nop
  8002eb4:	7ffffc00 	.word	0x7ffffc00
- 8002eb8:	08009ebc 	.word	0x08009ebc
+ 8002eb8:	08009ec8 	.word	0x08009ec8
  8002ebc:	08009d80 	.word	0x08009d80
- 8002ec0:	08009ec8 	.word	0x08009ec8
+ 8002ec0:	08009ed4 	.word	0x08009ed4
 
 08002ec4 <lfs_dir_fetch>:
 
@@ -7644,9 +7644,9 @@ nextname:
  80031e0:	bd80      	pop	{r7, pc}
  80031e2:	bf00      	nop
  80031e4:	002ffc00 	.word	0x002ffc00
- 80031e8:	08009e8c 	.word	0x08009e8c
- 80031ec:	08009f08 	.word	0x08009f08
- 80031f0:	08009f0c 	.word	0x08009f0c
+ 80031e8:	08009e98 	.word	0x08009e98
+ 80031ec:	08009f14 	.word	0x08009f14
+ 80031f0:	08009f18 	.word	0x08009f18
  80031f4:	700ffc00 	.word	0x700ffc00
  80031f8:	08002f61 	.word	0x08002f61
 
@@ -9314,12 +9314,12 @@ relocate:
  8003c50:	400ffc00 	.word	0x400ffc00
  8003c54:	000ffc08 	.word	0x000ffc08
  8003c58:	7ffffc0c 	.word	0x7ffffc0c
- 8003c5c:	08009f10 	.word	0x08009f10
- 8003c60:	0800abac 	.word	0x0800abac
+ 8003c5c:	08009f1c 	.word	0x08009f1c
+ 8003c60:	0800abb8 	.word	0x0800abb8
  8003c64:	08009d80 	.word	0x08009d80
- 8003c68:	08009ebc 	.word	0x08009ebc
- 8003c6c:	08009f38 	.word	0x08009f38
- 8003c70:	08009f5c 	.word	0x08009f5c
+ 8003c68:	08009ec8 	.word	0x08009ec8
+ 8003c6c:	08009f44 	.word	0x08009f44
+ 8003c70:	08009f68 	.word	0x08009f68
 
 08003c74 <lfs_dir_splittingcompact>:
 #endif
@@ -9662,11 +9662,11 @@ static int lfs_dir_splittingcompact(lfs_t *lfs, lfs_mdir_t *dir,
  8003e86:	bf00      	nop
  8003e88:	080037e3 	.word	0x080037e3
  8003e8c:	400ffc00 	.word	0x400ffc00
- 8003e90:	08009ebc 	.word	0x08009ebc
+ 8003e90:	08009ec8 	.word	0x08009ec8
  8003e94:	08009d80 	.word	0x08009d80
- 8003e98:	08009f94 	.word	0x08009f94
- 8003e9c:	08009fc4 	.word	0x08009fc4
- 8003ea0:	08009ff4 	.word	0x08009ff4
+ 8003e98:	08009fa0 	.word	0x08009fa0
+ 8003e9c:	08009fd0 	.word	0x08009fd0
+ 8003ea0:	0800a000 	.word	0x0800a000
 
 08003ea4 <lfs_dir_relocatingcommit>:
 
@@ -10095,10 +10095,10 @@ static int lfs_dir_relocatingcommit(lfs_t *lfs, lfs_mdir_t *dir,
  800419e:	6d7b      	ldr	r3, [r7, #84]	; 0x54
  80041a0:	e13b      	b.n	800441a <lfs_dir_relocatingcommit+0x576>
  80041a2:	bf00      	nop
- 80041a4:	0800a020 	.word	0x0800a020
- 80041a8:	0800abbc 	.word	0x0800abbc
+ 80041a4:	0800a02c 	.word	0x0800a02c
+ 80041a8:	0800abc8 	.word	0x0800abc8
  80041ac:	08009d80 	.word	0x08009d80
- 80041b0:	0800a030 	.word	0x0800a030
+ 80041b0:	0800a03c 	.word	0x0800a03c
  80041b4:	0800380f 	.word	0x0800380f
  80041b8:	7ffffc0c 	.word	0x7ffffc0c
         }
@@ -10458,8 +10458,8 @@ compact:
  800441e:	46bd      	mov	sp, r7
  8004420:	bdb0      	pop	{r4, r5, r7, pc}
  8004422:	bf00      	nop
- 8004424:	08009f10 	.word	0x08009f10
- 8004428:	0800abbc 	.word	0x0800abbc
+ 8004424:	08009f1c 	.word	0x08009f1c
+ 8004428:	0800abc8 	.word	0x0800abc8
  800442c:	08009d80 	.word	0x08009d80
 
 08004430 <lfs_dir_orphaningcommit>:
@@ -11022,12 +11022,12 @@ static int lfs_dir_orphaningcommit(lfs_t *lfs, lfs_mdir_t *dir,
  800489e:	f004 fa2d 	bl	8008cfc <__assert_func>
  80048a2:	bf00      	nop
  80048a4:	000ffc08 	.word	0x000ffc08
- 80048a8:	08009ebc 	.word	0x08009ebc
+ 80048a8:	08009ec8 	.word	0x08009ec8
  80048ac:	08009d80 	.word	0x08009d80
- 80048b0:	0800a038 	.word	0x0800a038
- 80048b4:	0800a074 	.word	0x0800a074
- 80048b8:	0800a0b8 	.word	0x0800a0b8
- 80048bc:	0800abd8 	.word	0x0800abd8
+ 80048b0:	0800a044 	.word	0x0800a044
+ 80048b4:	0800a080 	.word	0x0800a080
+ 80048b8:	0800a0c4 	.word	0x0800a0c4
+ 80048bc:	0800abe4 	.word	0x0800abe4
 
         // if we can't find dir, it must be new
         if (err != LFS_ERR_NOENT) {
@@ -11194,9 +11194,9 @@ static int lfs_dir_orphaningcommit(lfs_t *lfs, lfs_mdir_t *dir,
  8004a0e:	46bd      	mov	sp, r7
  8004a10:	bdb0      	pop	{r4, r5, r7, pc}
  8004a12:	bf00      	nop
- 8004a14:	08009ebc 	.word	0x08009ebc
+ 8004a14:	08009ec8 	.word	0x08009ec8
  8004a18:	08009d80 	.word	0x08009d80
- 8004a1c:	0800a074 	.word	0x0800a074
+ 8004a1c:	0800a080 	.word	0x0800a080
  8004a20:	000ffc08 	.word	0x000ffc08
 
 08004a24 <lfs_dir_commit>:
@@ -11803,9 +11803,9 @@ relocate:
  8004db2:	46bd      	mov	sp, r7
  8004db4:	bd80      	pop	{r7, pc}
  8004db6:	bf00      	nop
- 8004db8:	08009ebc 	.word	0x08009ebc
+ 8004db8:	08009ec8 	.word	0x08009ec8
  8004dbc:	08009d80 	.word	0x08009d80
- 8004dc0:	08009f38 	.word	0x08009f38
+ 8004dc0:	08009f44 	.word	0x08009f44
 
 08004dc4 <lfs_ctz_traverse>:
 #endif
@@ -12594,7 +12594,7 @@ static int lfs_file_open_(lfs_t *lfs, lfs_file_t *file,
  80052a2:	46bd      	mov	sp, r7
  80052a4:	bd80      	pop	{r7, pc}
  80052a6:	bf00      	nop
- 80052a8:	0800abf0 	.word	0x0800abf0
+ 80052a8:	0800abfc 	.word	0x0800abfc
 
 080052ac <lfs_file_close_>:
 #endif
@@ -12911,9 +12911,9 @@ relocate:
  8005488:	bd90      	pop	{r4, r7, pc}
  800548a:	bf00      	nop
  800548c:	fff7fc00 	.word	0xfff7fc00
- 8005490:	08009ebc 	.word	0x08009ebc
+ 8005490:	08009ec8 	.word	0x08009ec8
  8005494:	08009d80 	.word	0x08009d80
- 8005498:	08009f38 	.word	0x08009f38
+ 8005498:	08009f44 	.word	0x08009f44
 
 0800549c <lfs_file_outline>:
 #endif
@@ -13226,9 +13226,9 @@ relocate:
  8005676:	46bd      	mov	sp, r7
  8005678:	bd90      	pop	{r4, r7, pc}
  800567a:	bf00      	nop
- 800567c:	08009ebc 	.word	0x08009ebc
+ 800567c:	08009ec8 	.word	0x08009ec8
  8005680:	08009d80 	.word	0x08009d80
- 8005684:	08009f38 	.word	0x08009f38
+ 8005684:	08009f44 	.word	0x08009f44
 
 08005688 <lfs_file_sync_>:
 
@@ -14185,8 +14185,8 @@ static lfs_ssize_t lfs_file_write_(lfs_t *lfs, lfs_file_t *file,
  8005c82:	3728      	adds	r7, #40	; 0x28
  8005c84:	46bd      	mov	sp, r7
  8005c86:	bd80      	pop	{r7, pc}
- 8005c88:	0800a110 	.word	0x0800a110
- 8005c8c:	0800abfc 	.word	0x0800abfc
+ 8005c88:	0800a11c 	.word	0x0800a11c
+ 8005c8c:	0800ac08 	.word	0x0800ac08
  8005c90:	08009d80 	.word	0x08009d80
 
 08005c94 <lfs_init>:
@@ -14523,26 +14523,26 @@ static int lfs_init(lfs_t *lfs, const struct lfs_config *cfg) {
  8005f12:	f241 01a7 	movw	r1, #4263	; 0x10a7
  8005f16:	4803      	ldr	r0, [pc, #12]	; (8005f24 <lfs_init+0x290>)
  8005f18:	f002 fef0 	bl	8008cfc <__assert_func>
- 8005f1c:	0800a140 	.word	0x0800a140
- 8005f20:	0800ac0c 	.word	0x0800ac0c
+ 8005f1c:	0800a14c 	.word	0x0800a14c
+ 8005f20:	0800ac18 	.word	0x0800ac18
  8005f24:	08009d80 	.word	0x08009d80
- 8005f28:	0800a160 	.word	0x0800a160
- 8005f2c:	0800a180 	.word	0x0800a180
- 8005f30:	0800a1a0 	.word	0x0800a1a0
- 8005f34:	0800a1c0 	.word	0x0800a1c0
- 8005f38:	0800a1dc 	.word	0x0800a1dc
- 8005f3c:	0800a1f8 	.word	0x0800a1f8
- 8005f40:	0800a214 	.word	0x0800a214
- 8005f44:	0800a244 	.word	0x0800a244
- 8005f48:	0800a274 	.word	0x0800a274
- 8005f4c:	0800a2a8 	.word	0x0800a2a8
- 8005f50:	0800a2c4 	.word	0x0800a2c4
- 8005f54:	0800a310 	.word	0x0800a310
- 8005f58:	0800a32c 	.word	0x0800a32c
- 8005f5c:	0800a380 	.word	0x0800a380
- 8005f60:	0800a3e0 	.word	0x0800a3e0
- 8005f64:	0800a430 	.word	0x0800a430
- 8005f68:	0800a480 	.word	0x0800a480
+ 8005f28:	0800a16c 	.word	0x0800a16c
+ 8005f2c:	0800a18c 	.word	0x0800a18c
+ 8005f30:	0800a1ac 	.word	0x0800a1ac
+ 8005f34:	0800a1cc 	.word	0x0800a1cc
+ 8005f38:	0800a1e8 	.word	0x0800a1e8
+ 8005f3c:	0800a204 	.word	0x0800a204
+ 8005f40:	0800a220 	.word	0x0800a220
+ 8005f44:	0800a250 	.word	0x0800a250
+ 8005f48:	0800a280 	.word	0x0800a280
+ 8005f4c:	0800a2b4 	.word	0x0800a2b4
+ 8005f50:	0800a2d0 	.word	0x0800a2d0
+ 8005f54:	0800a31c 	.word	0x0800a31c
+ 8005f58:	0800a338 	.word	0x0800a338
+ 8005f5c:	0800a38c 	.word	0x0800a38c
+ 8005f60:	0800a3ec 	.word	0x0800a3ec
+ 8005f64:	0800a43c 	.word	0x0800a43c
+ 8005f68:	0800a48c 	.word	0x0800a48c
             || lfs->cfg->block_size % lfs->cfg->metadata_max == 0);
 
     // setup read cache
@@ -14974,16 +14974,16 @@ cleanup:
  800623a:	3734      	adds	r7, #52	; 0x34
  800623c:	46bd      	mov	sp, r7
  800623e:	bd90      	pop	{r4, r7, pc}
- 8006240:	0800a4d0 	.word	0x0800a4d0
- 8006244:	0800ac0c 	.word	0x0800ac0c
+ 8006240:	0800a4dc 	.word	0x0800a4dc
+ 8006244:	0800ac18 	.word	0x0800ac18
  8006248:	08009d80 	.word	0x08009d80
- 800624c:	0800a4f0 	.word	0x0800a4f0
- 8006250:	0800a50c 	.word	0x0800a50c
- 8006254:	0800a530 	.word	0x0800a530
- 8006258:	0800a54c 	.word	0x0800a54c
- 800625c:	0800a57c 	.word	0x0800a57c
- 8006260:	0800a5d4 	.word	0x0800a5d4
- 8006264:	0800a624 	.word	0x0800a624
+ 800624c:	0800a4fc 	.word	0x0800a4fc
+ 8006250:	0800a518 	.word	0x0800a518
+ 8006254:	0800a53c 	.word	0x0800a53c
+ 8006258:	0800a558 	.word	0x0800a558
+ 800625c:	0800a588 	.word	0x0800a588
+ 8006260:	0800a5e0 	.word	0x0800a5e0
+ 8006264:	0800a630 	.word	0x0800a630
 
 08006268 <lfs_deinit>:
 
@@ -15262,12 +15262,12 @@ cleanup:
  80063fa:	46bd      	mov	sp, r7
  80063fc:	bd80      	pop	{r7, pc}
  80063fe:	bf00      	nop
- 8006400:	0800a6b4 	.word	0x0800a6b4
- 8006404:	0800ac18 	.word	0x0800ac18
+ 8006400:	0800a6c0 	.word	0x0800a6c0
+ 8006404:	0800ac24 	.word	0x0800ac24
  8006408:	08009d80 	.word	0x08009d80
  800640c:	40100000 	.word	0x40100000
  8006410:	0ff00008 	.word	0x0ff00008
- 8006414:	0800a6cc 	.word	0x0800a6cc
+ 8006414:	0800a6d8 	.word	0x0800a6d8
  8006418:	20100018 	.word	0x20100018
 
 0800641c <lfs_tortoise_detectcycles>:
@@ -15346,9 +15346,9 @@ static int lfs_tortoise_detectcycles(
  800648a:	46bd      	mov	sp, r7
  800648c:	bd80      	pop	{r7, pc}
  800648e:	bf00      	nop
- 8006490:	08009ebc 	.word	0x08009ebc
+ 8006490:	08009ec8 	.word	0x08009ec8
  8006494:	08009d80 	.word	0x08009d80
- 8006498:	0800a6d8 	.word	0x0800a6d8
+ 8006498:	0800a6e4 	.word	0x0800a6e4
 
 0800649c <lfs_mount_>:
 
@@ -15759,20 +15759,20 @@ static int lfs_mount_(lfs_t *lfs, const struct lfs_config *cfg) {
                 goto cleanup;
  800674c:	e037      	b.n	80067be <lfs_mount_+0x322>
  800674e:	bf00      	nop
- 8006750:	0800a8b4 	.word	0x0800a8b4
- 8006754:	0800a6cc 	.word	0x0800a6cc
+ 8006750:	0800a8c0 	.word	0x0800a8c0
+ 8006754:	0800a6d8 	.word	0x0800a6d8
  8006758:	08002f61 	.word	0x08002f61
  800675c:	0ff00008 	.word	0x0ff00008
  8006760:	7ffffc00 	.word	0x7ffffc00
  8006764:	20100018 	.word	0x20100018
- 8006768:	08009ebc 	.word	0x08009ebc
+ 8006768:	08009ec8 	.word	0x08009ec8
  800676c:	08009d80 	.word	0x08009d80
- 8006770:	0800a704 	.word	0x0800a704
- 8006774:	0800a73c 	.word	0x0800a73c
- 8006778:	0800a77c 	.word	0x0800a77c
- 800677c:	0800a7b0 	.word	0x0800a7b0
- 8006780:	0800a7e4 	.word	0x0800a7e4
- 8006784:	0800a818 	.word	0x0800a818
+ 8006770:	0800a710 	.word	0x0800a710
+ 8006774:	0800a748 	.word	0x0800a748
+ 8006778:	0800a788 	.word	0x0800a788
+ 800677c:	0800a7bc 	.word	0x0800a7bc
+ 8006780:	0800a7f0 	.word	0x0800a7f0
+ 8006784:	0800a824 	.word	0x0800a824
             }
 
             lfs->block_count = superblock.block_count;
@@ -15928,10 +15928,10 @@ cleanup:
  800688a:	46bd      	mov	sp, r7
  800688c:	bdf0      	pop	{r4, r5, r6, r7, pc}
  800688e:	bf00      	nop
- 8006890:	08009ebc 	.word	0x08009ebc
+ 8006890:	08009ec8 	.word	0x08009ec8
  8006894:	08009d80 	.word	0x08009d80
- 8006898:	0800a84c 	.word	0x0800a84c
- 800689c:	0800a87c 	.word	0x0800a87c
+ 8006898:	0800a858 	.word	0x0800a858
+ 800689c:	0800a888 	.word	0x0800a888
 
 080068a0 <lfs_unmount_>:
 
@@ -16308,7 +16308,7 @@ int lfs_fs_traverse_(lfs_t *lfs,
  8006b0a:	3774      	adds	r7, #116	; 0x74
  8006b0c:	46bd      	mov	sp, r7
  8006b0e:	bd90      	pop	{r4, r7, pc}
- 8006b10:	0800a8b4 	.word	0x0800a8b4
+ 8006b10:	0800a8c0 	.word	0x0800a8c0
  8006b14:	700ffc00 	.word	0x700ffc00
 
 08006b18 <lfs_fs_pred>:
@@ -16410,7 +16410,7 @@ static int lfs_fs_pred(lfs_t *lfs,
  8006baa:	46bd      	mov	sp, r7
  8006bac:	bd90      	pop	{r4, r7, pc}
  8006bae:	bf00      	nop
- 8006bb0:	0800a8b4 	.word	0x0800a8b4
+ 8006bb0:	0800a8c0 	.word	0x0800a8c0
 
 08006bb4 <lfs_fs_parent_match>:
 };
@@ -16612,7 +16612,7 @@ static lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t pair[2],
  8006cde:	373c      	adds	r7, #60	; 0x3c
  8006ce0:	46bd      	mov	sp, r7
  8006ce2:	bd90      	pop	{r4, r7, pc}
- 8006ce4:	0800a8b4 	.word	0x0800a8b4
+ 8006ce4:	0800a8c0 	.word	0x0800a8c0
  8006ce8:	08006bb5 	.word	0x08006bb5
  8006cec:	20000008 	.word	0x20000008
  8006cf0:	7ff003ff 	.word	0x7ff003ff
@@ -16718,10 +16718,10 @@ static int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans) {
  8006daa:	370c      	adds	r7, #12
  8006dac:	46bd      	mov	sp, r7
  8006dae:	bd90      	pop	{r4, r7, pc}
- 8006db0:	0800a8c4 	.word	0x0800a8c4
- 8006db4:	0800ac24 	.word	0x0800ac24
+ 8006db0:	0800a8d0 	.word	0x0800a8d0
+ 8006db4:	0800ac30 	.word	0x0800ac30
  8006db8:	08009d80 	.word	0x08009d80
- 8006dbc:	0800a8fc 	.word	0x0800a8fc
+ 8006dbc:	0800a908 	.word	0x0800a908
 
 08006dc0 <lfs_fs_prepmove>:
 #endif
@@ -16918,9 +16918,9 @@ static int lfs_fs_desuperblock(lfs_t *lfs) {
  8006ef6:	3758      	adds	r7, #88	; 0x58
  8006ef8:	46bd      	mov	sp, r7
  8006efa:	bd80      	pop	{r7, pc}
- 8006efc:	08009ebc 	.word	0x08009ebc
+ 8006efc:	08009ec8 	.word	0x08009ec8
  8006f00:	08009d80 	.word	0x08009d80
- 8006f04:	0800a934 	.word	0x0800a934
+ 8006f04:	0800a940 	.word	0x0800a940
  8006f08:	20100018 	.word	0x20100018
 
 08006f0c <lfs_fs_demove>:
@@ -17053,11 +17053,11 @@ static int lfs_fs_demove(lfs_t *lfs) {
  8006fea:	46bd      	mov	sp, r7
  8006fec:	bdb0      	pop	{r4, r5, r7, pc}
  8006fee:	bf00      	nop
- 8006ff0:	08009ebc 	.word	0x08009ebc
+ 8006ff0:	08009ec8 	.word	0x08009ec8
  8006ff4:	08009d80 	.word	0x08009d80
- 8006ff8:	0800a968 	.word	0x0800a968
- 8006ffc:	0800a99c 	.word	0x0800a99c
- 8007000:	0800ac38 	.word	0x0800ac38
+ 8006ff8:	0800a974 	.word	0x0800a974
+ 8006ffc:	0800a9a8 	.word	0x0800a9a8
+ 8007000:	0800ac44 	.word	0x0800ac44
 
 08007004 <lfs_fs_deorphan>:
 #endif
@@ -17481,12 +17481,12 @@ static int lfs_fs_deorphan(lfs_t *lfs, bool powerloss) {
  8007340:	bdb0      	pop	{r4, r5, r7, pc}
  8007342:	bf00      	nop
  8007344:	7ffffc00 	.word	0x7ffffc00
- 8007348:	08009ebc 	.word	0x08009ebc
+ 8007348:	08009ec8 	.word	0x08009ec8
  800734c:	08009d80 	.word	0x08009d80
- 8007350:	0800a9d0 	.word	0x0800a9d0
- 8007354:	0800aa14 	.word	0x0800aa14
+ 8007350:	0800a9dc 	.word	0x0800a9dc
+ 8007354:	0800aa20 	.word	0x0800aa20
  8007358:	600ffc08 	.word	0x600ffc08
- 800735c:	0800aa5c 	.word	0x0800aa5c
+ 800735c:	0800aa68 	.word	0x0800aa68
  8007360:	000ffc08 	.word	0x000ffc08
 
 08007364 <lfs_fs_forceconsistency>:
@@ -17757,8 +17757,8 @@ int lfs_file_open(lfs_t *lfs, lfs_file_t *file, const char *path, int flags) {
  80074b6:	46bd      	mov	sp, r7
  80074b8:	bd80      	pop	{r7, pc}
  80074ba:	bf00      	nop
- 80074bc:	0800aaac 	.word	0x0800aaac
- 80074c0:	0800ac48 	.word	0x0800ac48
+ 80074bc:	0800aab8 	.word	0x0800aab8
+ 80074c0:	0800ac54 	.word	0x0800ac54
  80074c4:	08009d80 	.word	0x08009d80
 
 080074c8 <lfs_file_close>:
@@ -17815,8 +17815,8 @@ int lfs_file_close(lfs_t *lfs, lfs_file_t *file) {
  800750e:	3710      	adds	r7, #16
  8007510:	46bd      	mov	sp, r7
  8007512:	bd80      	pop	{r7, pc}
- 8007514:	0800aae4 	.word	0x0800aae4
- 8007518:	0800ac58 	.word	0x0800ac58
+ 8007514:	0800aaf0 	.word	0x0800aaf0
+ 8007518:	0800ac64 	.word	0x0800ac64
  800751c:	08009d80 	.word	0x08009d80
 
 08007520 <lfs_file_write>:
@@ -17878,8 +17878,8 @@ lfs_ssize_t lfs_file_write(lfs_t *lfs, lfs_file_t *file,
  800756e:	3718      	adds	r7, #24
  8007570:	46bd      	mov	sp, r7
  8007572:	bd80      	pop	{r7, pc}
- 8007574:	0800aae4 	.word	0x0800aae4
- 8007578:	0800ac68 	.word	0x0800ac68
+ 8007574:	0800aaf0 	.word	0x0800aaf0
+ 8007578:	0800ac74 	.word	0x0800ac74
  800757c:	08009d80 	.word	0x08009d80
 
 08007580 <lfs_crc>:
@@ -17959,7 +17959,7 @@ uint32_t lfs_crc(uint32_t crc, const void *buffer, size_t size) {
  80075f0:	f85d 7b04 	ldr.w	r7, [sp], #4
  80075f4:	4770      	bx	lr
  80075f6:	bf00      	nop
- 80075f8:	0800ac78 	.word	0x0800ac78
+ 80075f8:	0800ac84 	.word	0x0800ac84
 
 080075fc <SystemInit>:
   * @param  None
@@ -18209,7 +18209,7 @@ HAL_StatusTypeDef HAL_Init(void)
  8007734:	4618      	mov	r0, r3
  8007736:	bd80      	pop	{r7, pc}
  8007738:	44020c00 	.word	0x44020c00
- 800773c:	0800acb8 	.word	0x0800acb8
+ 800773c:	0800acc4 	.word	0x0800acc4
  8007740:	20000058 	.word	0x20000058
 
 08007744 <HAL_InitTick>:
@@ -21505,7 +21505,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(const RCC_ClkInitTypeDef  *pClkInitStruct,
  8008a56:	bf00      	nop
  8008a58:	44020c00 	.word	0x44020c00
  8008a5c:	40022000 	.word	0x40022000
- 8008a60:	0800acb8 	.word	0x0800acb8
+ 8008a60:	0800acc4 	.word	0x0800acc4
  8008a64:	20000058 	.word	0x20000058
  8008a68:	2000005c 	.word	0x2000005c
 
@@ -21858,7 +21858,7 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  8008cec:	bd80      	pop	{r7, pc}
  8008cee:	bf00      	nop
  8008cf0:	44020c00 	.word	0x44020c00
- 8008cf4:	0800acb8 	.word	0x0800acb8
+ 8008cf4:	0800acc4 	.word	0x0800acc4
  8008cf8:	20000058 	.word	0x20000058
 
 08008cfc <__assert_func>:
@@ -21882,9 +21882,9 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  8008d24:	e7f3      	b.n	8008d0e <__assert_func+0x12>
  8008d26:	bf00      	nop
  8008d28:	200000bc 	.word	0x200000bc
- 8008d2c:	0800acc8 	.word	0x0800acc8
- 8008d30:	0800acd5 	.word	0x0800acd5
- 8008d34:	0800ad03 	.word	0x0800ad03
+ 8008d2c:	0800acd4 	.word	0x0800acd4
+ 8008d30:	0800ace1 	.word	0x0800ace1
+ 8008d34:	0800ad0f 	.word	0x0800ad0f
 
 08008d38 <malloc>:
  8008d38:	4b02      	ldr	r3, [pc, #8]	; (8008d44 <malloc+0xc>)
@@ -22485,10 +22485,10 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  800925e:	3601      	adds	r6, #1
  8009260:	4798      	blx	r3
  8009262:	e7f2      	b.n	800924a <__libc_init_array+0x1e>
- 8009264:	0800ad38 	.word	0x0800ad38
- 8009268:	0800ad38 	.word	0x0800ad38
- 800926c:	0800ad38 	.word	0x0800ad38
- 8009270:	0800ad3c 	.word	0x0800ad3c
+ 8009264:	0800ad44 	.word	0x0800ad44
+ 8009268:	0800ad44 	.word	0x0800ad44
+ 800926c:	0800ad44 	.word	0x0800ad44
+ 8009270:	0800ad48 	.word	0x0800ad48
 
 08009274 <__retarget_lock_init_recursive>:
  8009274:	4770      	bx	lr
@@ -22859,11 +22859,11 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  80095a8:	4b04      	ldr	r3, [pc, #16]	; (80095bc <_vfiprintf_r+0x22c>)
  80095aa:	f000 f87d 	bl	80096a8 <_printf_i>
  80095ae:	e7e4      	b.n	800957a <_vfiprintf_r+0x1ea>
- 80095b0:	0800ad04 	.word	0x0800ad04
- 80095b4:	0800ad0e 	.word	0x0800ad0e
+ 80095b0:	0800ad10 	.word	0x0800ad10
+ 80095b4:	0800ad1a 	.word	0x0800ad1a
  80095b8:	00000000 	.word	0x00000000
  80095bc:	0800936b 	.word	0x0800936b
- 80095c0:	0800ad0a 	.word	0x0800ad0a
+ 80095c0:	0800ad16 	.word	0x0800ad16
 
 080095c4 <_printf_common>:
  80095c4:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -23194,8 +23194,8 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  80098d8:	2500      	movs	r5, #0
  80098da:	f104 0619 	add.w	r6, r4, #25
  80098de:	e7f5      	b.n	80098cc <_printf_i+0x224>
- 80098e0:	0800ad15 	.word	0x0800ad15
- 80098e4:	0800ad26 	.word	0x0800ad26
+ 80098e0:	0800ad21 	.word	0x0800ad21
+ 80098e4:	0800ad32 	.word	0x0800ad32
 
 080098e8 <__sflush_r>:
  80098e8:	898a      	ldrh	r2, [r1, #12]

@@ -46,22 +46,22 @@
 		<link>
 			<name>Application/littlefs/lfs.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs.c</locationURI>
 		</link>
 		<link>
 			<name>Application/littlefs/lfs.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs.h</locationURI>
 		</link>
 		<link>
 			<name>Application/littlefs/lfs_util.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs_util.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs_util.c</locationURI>
 		</link>
 		<link>
 			<name>Application/littlefs/lfs_util.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs_util.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/littlefs-2.10.2/littlefs-2.10.2/lfs_util.h</locationURI>
 		</link>
 		<link>
 			<name>Drivers/CMSIS/system_stm32h5xx.c</name>
