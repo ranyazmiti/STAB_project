@@ -16,7 +16,6 @@ extern struct lfs_config cfg;
 
 #include "lfs.h"
 
-// Déclaration externe de la config pour qu'elle soit utilisable dans main.c
 extern struct lfs_config cfg;
 
 #endif /* APPLICATION_LITTLEFS_PORT_H_ */

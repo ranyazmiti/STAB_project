@@ -1,5 +1,5 @@
 Drivers/STM32H5xx_HAL_Driver/stm32h5xx_hal.o: \
- C:/Users/hp/Desktop/pfa/STAB_project/Drivers/STM32H5xx_HAL_Driver/Src/stm32h5xx_hal.c \
+ C:/Users/hp/Desktop/pfa/stab_project/Drivers/STM32H5xx_HAL_Driver/Src/stm32h5xx_hal.c \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
  ../../Core/Inc/stm32h5xx_hal_conf.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_rcc.h \

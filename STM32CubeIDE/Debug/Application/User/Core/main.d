@@ -1,5 +1,5 @@
 Application/User/Core/main.o: \
- C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/main.c \
+ C:/Users/hp/Desktop/pfa/stab_project/Core/Src/main.c \
  ../../Core/Inc/main.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
  ../../Core/Inc/stm32h5xx_hal_conf.h \

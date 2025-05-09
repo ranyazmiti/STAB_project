@@ -33,7 +33,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define USER_LED2_Pin GPIO_PIN_8
+#define USER_LED2_GPIO_Port GPIOI
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -96,13 +97,11 @@ int main(void)
   int err = lfs_mount(&lfs, &cfg);
 
   if (err) {
-    // Format si le système de fichiers est absent ou corrompu
     lfs_format(&lfs, &cfg);
     err = lfs_mount(&lfs, &cfg);
   }
 
   if (err == 0) {
-      // === Début code d’écriture LittleFS ===
       lfs_file_t file;
       const char *text = "Bonjour SRAM3 !";
 
@@ -110,19 +109,15 @@ int main(void)
           lfs_file_write(&lfs, &file, text, strlen(text));
           lfs_file_close(&lfs, &file);
       }
-      // === Fin code d’écriture LittleFS ===
-
-      // LED clignote toutes les secondes (succès)
       while (1) {
-          HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);   // Allume LED
-          HAL_Delay(1000); // Attend 1 seconde
-          HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET); // Éteint LED
-          HAL_Delay(10000); // Attend 10 seconde
+          HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+          HAL_Delay(1000);
+          HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+          HAL_Delay(10000);
       }
   } else {
-      // LED OFF = échec du montage
       HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-      while (1); // Boucle infinie pour bloquer ici si erreur
+      while (1);
   }
 
    /* USER CODE END 2 */
@@ -229,7 +224,6 @@ static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
-  // Cette section configure la LED LED1 pour qu'elle soit éteinte au démarrage.
   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 
   /* USER CODE END MX_GPIO_Init_1 */
