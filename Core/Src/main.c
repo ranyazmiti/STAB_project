@@ -21,9 +21,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "icache.h"
+#include "gpio.h"
 #include "lfs.h"
 #include "lfs_util.h"
 #include "lfs_config.h"
+#include "usart.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,13 +49,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_ICACHE_Init(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -91,36 +93,94 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_ICACHE_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   extern struct lfs_config cfg;
   lfs_t lfs;
   int err = lfs_mount(&lfs, &cfg);
 
+  // Test UART : Remplacement de printf() par HAL_UART_Transmit
+  uint8_t msg_start[] = "Demarrage du système...\r\n";
+  HAL_UART_Transmit(&huart1, msg_start, sizeof(msg_start) - 1, HAL_MAX_DELAY);
+
   if (err) {
-    lfs_format(&lfs, &cfg);
-    err = lfs_mount(&lfs, &cfg);
+      uint8_t msg_format[] = "LittleFS non monte, formatage...\r\n";
+      HAL_UART_Transmit(&huart1, msg_format, sizeof(msg_format) - 1, HAL_MAX_DELAY);
+
+      lfs_format(&lfs, &cfg);
+      err = lfs_mount(&lfs, &cfg);
   }
 
   if (err == 0) {
       lfs_file_t file;
       const char *text = "Bonjour SRAM3 !";
+      char buffer[128];
+
+      // Écriture du fichier
+      uint8_t msg_write[] = "Ecriture dans monfichier.txt...\r\n";
+      HAL_UART_Transmit(&huart1, msg_write, sizeof(msg_write) - 1, HAL_MAX_DELAY);
 
       if (lfs_file_open(&lfs, &file, "monfichier.txt", LFS_O_WRONLY | LFS_O_CREAT) == 0) {
           lfs_file_write(&lfs, &file, text, strlen(text));
           lfs_file_close(&lfs, &file);
+
+          uint8_t msg_success[] = "Ecriture reussie\r\n";
+          HAL_UART_Transmit(&huart1, msg_success, sizeof(msg_success) - 1, HAL_MAX_DELAY);
+      } else {
+          uint8_t msg_error_open[] = "Erreur : ouverture du fichier en ecriture\r\n";
+          HAL_UART_Transmit(&huart1, msg_error_open, sizeof(msg_error_open) - 1, HAL_MAX_DELAY);
       }
+
+      // Lecture du fichier
+      uint8_t msg_read[] = "Lecture de monfichier.txt...\r\n";
+      HAL_UART_Transmit(&huart1, msg_read, sizeof(msg_read) - 1, HAL_MAX_DELAY);
+
+      if (lfs_file_open(&lfs, &file, "monfichier.txt", LFS_O_RDONLY) == 0) {
+          lfs_ssize_t bytes_read = lfs_file_read(&lfs, &file, buffer, sizeof(buffer) - 1);
+          if (bytes_read > 0) {
+              buffer[bytes_read] = '\0'; // Terminaison de chaîne
+              uint8_t msg_content[] = "Contenu lu : ";
+              HAL_UART_Transmit(&huart1, msg_content, sizeof(msg_content) - 1, HAL_MAX_DELAY);
+              HAL_UART_Transmit(&huart1, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+              uint8_t msg_newline[] = "\r\n";
+              HAL_UART_Transmit(&huart1, msg_newline, sizeof(msg_newline) - 1, HAL_MAX_DELAY);
+          } else {
+              uint8_t msg_read_error[] = "Erreur : lecture du fichier\r\n";
+              HAL_UART_Transmit(&huart1, msg_read_error, sizeof(msg_read_error) - 1, HAL_MAX_DELAY);
+          }
+          lfs_file_close(&lfs, &file);
+      } else {
+          uint8_t msg_read_open_error[] = "Erreur : ouverture du fichier en lecture\r\n";
+          HAL_UART_Transmit(&huart1, msg_read_open_error, sizeof(msg_read_open_error) - 1, HAL_MAX_DELAY);
+      }
+
+      // Boucle LED + message
+      uint8_t msg_loop[] = "Demarrage de la boucle LED...\r\n";
+      HAL_UART_Transmit(&huart1, msg_loop, sizeof(msg_loop) - 1, HAL_MAX_DELAY);
+
       while (1) {
           HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+
+          uint8_t msg_on[] = "LED ON\r\n";
+          HAL_UART_Transmit(&huart1, msg_on, sizeof(msg_on) - 1, HAL_MAX_DELAY);
+
           HAL_Delay(1000);
+
           HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-          HAL_Delay(10000);
+
+          uint8_t msg_off[] = "LED OFF\r\n";
+          HAL_UART_Transmit(&huart1, msg_off, sizeof(msg_off) - 1, HAL_MAX_DELAY);
+
+          HAL_Delay(1000);
       }
   } else {
-      HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-      while (1);
-  }
+      uint8_t msg_fatal_error[] = "Erreur fatale : impossible de monter LittleFS\r\n";
+      HAL_UART_Transmit(&huart1, msg_fatal_error, sizeof(msg_fatal_error) - 1, HAL_MAX_DELAY);
 
-   /* USER CODE END 2 */
+      HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+      while (1); // Boucle infinie en cas d'erreur
+  }
+  /* USER CODE END 2 */
 
    /* Infinite loop */
    /* USER CODE BEGIN WHILE */
@@ -192,9 +252,8 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
-static void MX_ICACHE_Init(void)
+void MX_ICACHE_Init(void)
 {
-
   /* USER CODE BEGIN ICACHE_Init 0 */
 
   /* USER CODE END ICACHE_Init 0 */
@@ -212,7 +271,6 @@ static void MX_ICACHE_Init(void)
   /* USER CODE BEGIN ICACHE_Init 2 */
 
   /* USER CODE END ICACHE_Init 2 */
-
 }
 
 /**
@@ -220,13 +278,9 @@ static void MX_ICACHE_Init(void)
   * @param None
   * @retval None
   */
-static void MX_GPIO_Init(void)
+void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  /* USER CODE BEGIN MX_GPIO_Init_1 */
-  HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-
-  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOI_CLK_ENABLE();
@@ -242,9 +296,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED1_GPIO_Port, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init 2 */
 
-  /* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init 2 */
 }
 
 /* USER CODE BEGIN 4 */

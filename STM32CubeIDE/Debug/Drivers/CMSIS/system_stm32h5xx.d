@@ -1,5 +1,5 @@
 Drivers/CMSIS/system_stm32h5xx.o: \
- C:/Users/hp/Desktop/pfa/stab_project/Core/Src/system_stm32h5xx.c \
+ C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/system_stm32h5xx.c \
  ../../Drivers/CMSIS/Device/ST/STM32H5xx/Include/stm32h5xx.h \
  ../../Drivers/CMSIS/Device/ST/STM32H5xx/Include/stm32h573xx.h \
  ../../Drivers/CMSIS/Include/core_cm33.h \
@@ -24,6 +24,8 @@ Drivers/CMSIS/system_stm32h5xx.o: \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_flash_ex.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr_ex.h \
+ ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_uart.h \
+ ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_uart_ex.h \
  ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h
 ../../Drivers/CMSIS/Device/ST/STM32H5xx/Include/stm32h5xx.h:
 ../../Drivers/CMSIS/Device/ST/STM32H5xx/Include/stm32h573xx.h:
@@ -49,4 +51,6 @@ Drivers/CMSIS/system_stm32h5xx.o: \
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_flash_ex.h:
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr.h:
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pwr_ex.h:
+../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_uart.h:
+../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_uart_ex.h:
 ../../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h:

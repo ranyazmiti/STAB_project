@@ -1,5 +1,5 @@
-C:/Users/hp/Desktop/pfa/stab_project/Core/Src/main.c:68:5:main	232	static
-C:/Users/hp/Desktop/pfa/stab_project/Core/Src/main.c:137:6:SystemClock_Config	120	static
-C:/Users/hp/Desktop/pfa/stab_project/Core/Src/main.c:195:13:MX_ICACHE_Init	8	static
-C:/Users/hp/Desktop/pfa/stab_project/Core/Src/main.c:223:13:MX_GPIO_Init	40	static
-C:/Users/hp/Desktop/pfa/stab_project/Core/Src/main.c:258:6:Error_Handler	4	static,ignoring_inline_asm
+C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/main.c:70:5:main	592	static
+C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/main.c:197:6:SystemClock_Config	120	static
+C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/main.c:255:6:MX_ICACHE_Init	8	static
+C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/main.c:281:6:MX_GPIO_Init	40	static
+C:/Users/hp/Desktop/pfa/STAB_project/Core/Src/main.c:312:6:Error_Handler	4	static,ignoring_inline_asm
